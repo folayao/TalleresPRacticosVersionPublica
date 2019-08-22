@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request,render_template
 from flask_cors import CORS
 from datetime import datetime
 import random
+import numpy
 
 app = Flask(__name__)
 CORS(app)
@@ -20,23 +21,26 @@ mediciones = [
 
 #tipo de medicion
 
-@app.route("/mediciones")
-def get():
-    return jsonify(mediciones)
-
 @app.route("/index")
 def index():
     return render_template("index.html") #Esto es una prueba para manejar render_templates.
 
-@app.route('/mediciones/')#GET obtener info
+@app.route('/mediciones')#GET obtener info
 def getMedia():
+    counter = 0 
+    suma = 0
+    for m in mediciones:
+        suma = suma + m['valor']
+        counter = counter +1
+    media = suma/counter
+    return jsonify(media)
     
-    
-@app.route('/mediciones/')#GETALL obtener info
+@app.route('/mediciones/getAll')#GETALL obtener info
 def getAllMedia():
+    return jsonify(mediciones)
 
-@app.route('/mediciones/', methods=[POST])#POST es para crear nuevos archivos.
-def postMedia():
+#@app.route('/mediciones/', methods=[POST])#POST es para crear nuevos archivos.             
+#def postMedia():
     
 
 
