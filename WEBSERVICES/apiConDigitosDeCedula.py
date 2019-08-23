@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, request,render_template
 from flask_cors import CORS
 from datetime import datetime
@@ -25,7 +26,7 @@ mediciones = [
 def index():
     return render_template("index.html") #Esto es una prueba para manejar render_templates.
 
-@app.route('/mediciones')#GET obtener info
+@app.route('/mediciones/media')#GET obtener info media
 def getMedia():
     counter = 0 
     suma = 0
@@ -34,6 +35,15 @@ def getMedia():
         counter = counter +1
     media = suma/counter
     return jsonify(media)
+
+
+@app.route('/mediciones/mediana')#GET obtener info mediana
+def getMedia():
+    mediana = m.mediana(m['valor'])
+     mediciones % 2
+        mediana = ['valor']
+
+
     
 @app.route('/mediciones/getAll')#GETALL obtener info
 def getAllMedia():
