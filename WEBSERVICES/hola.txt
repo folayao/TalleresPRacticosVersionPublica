@@ -1,1 +1,2 @@
-hola
+En este documento txt se encuentra la informacion con la cual se desarrollo
+el archivo api y el json de postman.

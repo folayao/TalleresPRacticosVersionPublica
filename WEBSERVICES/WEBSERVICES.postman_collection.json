@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "d5b206c0-9cc4-483d-a52b-6247c25ba4e0",
+		"name": "WEBSERVICES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "127.0.0.1:5000/mediciones/getAll",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/mediciones/getAll",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"mediciones",
+						"getAll"
+					]
+				},
+				"description": "Este es el getall en json"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:5000/mediciones/mediana",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/mediciones/mediana",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"mediciones",
+						"mediana"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:5000/mediciones/post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"fecha\": \"2019-08-04 12:15:00\",\n        \"sensor\": \"HC-SR04\",\n        \"unidades\": \"centimetros\",\n        \"valor\": 800,\n        \"variable\": \"distancia\"\n    }"
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/mediciones/post",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"mediciones",
+						"post"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
