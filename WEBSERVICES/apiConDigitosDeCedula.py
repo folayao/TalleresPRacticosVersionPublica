@@ -3,21 +3,21 @@ from flask import Flask, jsonify, request,render_template
 from flask_cors import CORS
 from datetime import datetime
 import random
-import numpy
+import statistics as stats
 
 app = Flask(__name__)
 CORS(app)
 
-tipo_medicion= {'sensor' : 'DS18B20','variable':'temperatura','unidades':'centigrados'}
+tipo_medicion= {'sensor' : 'HC-SR04','variable':'distancia','unidades':'centimetros'}
 
 mediciones = [
-    {'fecha': '2019-08-07 12:23:00',**tipo_medicion, 'valor': random.randint(17,22)},
-    {'fecha': '2019-08-06 12:22:00',**tipo_medicion, 'valor': random.randint(17,22)},
-    {'fecha': '2019-08-05 12:21:00',**tipo_medicion, 'valor': random.randint(17,22)},
-    {'fecha': '2019-08-04 12:14:00',**tipo_medicion, 'valor': random.randint(17,22)},
-    {'fecha': '2019-08-04 12:24:00',**tipo_medicion, 'valor': random.randint(17,22)},
-    {'fecha': '2019-08-03 12:22:00',**tipo_medicion, 'valor': random.randint(17,22)},
-    {'fecha': '2019-08-03 12:20:00',**tipo_medicion, 'valor': random.randint(17,22)}
+    {'fecha': '2019-08-07 12:23:00',**tipo_medicion, 'valor': random.randint(0,100)},
+    {'fecha': '2019-08-06 12:100:00',**tipo_medicion, 'valor': random.randint(0,100)},
+    {'fecha': '2019-08-05 12:21:00',**tipo_medicion, 'valor': random.randint(0,100)},
+    {'fecha': '2019-08-04 12:14:00',**tipo_medicion, 'valor': random.randint(0,100)},
+    {'fecha': '2019-08-04 12:24:00',**tipo_medicion, 'valor': random.randint(0,100)},
+    {'fecha': '2019-08-03 12:100:00',**tipo_medicion, 'valor': random.randint(0,100)},
+    {'fecha': '2019-08-03 12:20:00',**tipo_medicion, 'valor': random.randint(0,100)}
 ]
 
 #tipo de medicion
@@ -38,12 +38,13 @@ def getMedia():
 
 
 @app.route('/mediciones/mediana')#GET obtener info mediana
-def getMedia():
-    mediana = m.mediana(m['valor'])
-     mediciones % 2
-        mediana = ['valor']
+def getMediana():
+    
+    mediana= []
+    for m in mediciones:
+        mediana.append(m['valor'])
 
-
+    return jsonify(stats.median(mediana))
     
 @app.route('/mediciones/getAll')#GETALL obtener info
 def getAllMedia():
